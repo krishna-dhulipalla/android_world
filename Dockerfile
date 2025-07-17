@@ -105,4 +105,4 @@ RUN uv pip install . --system
 #=======================
 # framework entry point
 #=======================
-ENTRYPOINT [ "./docker_setup/entrypoint.sh" ]
+ENTRYPOINT [ "/docker_setup/entrypoint.sh" ]
