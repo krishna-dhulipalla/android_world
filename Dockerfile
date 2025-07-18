@@ -9,7 +9,10 @@ WORKDIR /
 # Install Dependencies
 #=============================
 SHELL ["/bin/bash", "-c"]
-RUN apt update && apt install -y curl sudo wget unzip bzip2 libdrm-dev libxkbcommon-dev libgbm-dev libasound-dev libnss3 libxcursor1 libpulse-dev libxshmfence-dev xauth xvfb x11vnc fluxbox wmctrl libdbus-glib-1-2 ffmpeg
+RUN apt update && apt install -y curl sudo wget unzip bzip2 libdrm-dev libxkbcommon-dev \
+    libgbm-dev libasound-dev libnss3 libxcursor1 libpulse-dev libxshmfence-dev xauth \
+    xvfb x11vnc fluxbox wmctrl libdbus-glib-1-2 ffmpeg dos2unix
+
 
 #==============================
 # Android SDK ARGS
@@ -100,9 +103,14 @@ RUN chmod a+x docker_setup/start_emu.sh && \
 #====================================
 # Install dependencies
 #====================================
+ENV UV_HTTP_TIMEOUT=120a
 RUN uv pip install . --system
 
 #=======================
 # framework entry point
 #=======================
 ENTRYPOINT [ "/docker_setup/entrypoint.sh" ]
+
+# Convert line endings and ensure executables
+RUN dos2unix docker_setup/*.sh && \
+    chmod +x docker_setup/*.sh
