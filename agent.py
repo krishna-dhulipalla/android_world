@@ -13,7 +13,7 @@ VALID_ACTION_TYPES = {
 
 
 class LLMAgent:
-    def __init__(self, env, goal: str, model: str = "gpt-4o-2024-08-06"):
+    def __init__(self, env, goal: str, model: str = "gpt-3.5-turbo-0125"):
         self.env = env
         self.goal = goal
         self.client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])

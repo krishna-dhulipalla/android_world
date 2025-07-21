@@ -367,8 +367,8 @@ Action: {{"action_type": "status", "goal_status": "infeasible"}}"""
           step_data,
       )
 
-    print('Action: ' + action)
-    print('Reason: ' + reason)
+    # print('Action: ' + action)
+    # print('Reason: ' + reason)
 
     try:
       converted_action = json_action.JSONAction(
@@ -475,7 +475,7 @@ Action: {{"action_type": "status", "goal_status": "infeasible"}}"""
         if raw_response
         else 'Error calling LLM in summerization phase.'
     )
-    print('Summary: ' + summary)
+    #print('Summary: ' + summary)
     step_data['summary_raw_response'] = raw_response
 
     self.history.append(step_data)
